@@ -2,4 +2,10 @@
 # Remove the previous line if you edit this file
 
 # Export all names
-exportPattern(".")
+import(ggplot2)
+import(dplyr)
+export(fitCentipede)
+export(imageCutSites)
+export(imageCutSitesCombined)
+export(plotProfile)
+export(plotProfile2)
