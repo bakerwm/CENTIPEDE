@@ -230,7 +230,14 @@ fitCentipede <- function(Xlist,Y, LambdaParList, BetaLogit, NegBinParList, sweep
   compMultiNomLogRatio <- function(X,Lambda,TrimP=0.0001){
     S <- dim(X)[2];
     if(S>1){
-      MultiNomLogRatio <-  X %*% log(Lambda*S); ## Multinomial for 1 and 0
+      # MultiNomLogRatio <-  X %*% log(Lambda*S); ## Multinomial for 1 and 0
+      
+      # create Lambda, remove -Inf values
+      fn        <- log(Lambda * S)
+      fn_noInf  <- fn[is.finite(fn)]
+      fn[is.infinite(fn)] <- min(fn_noInf) # assign min to Inf values
+      MultiNomLogRatio    <-  X %*% fn
+  
       MultiNomLogRatio <- clipExtremes(MultiNomLogRatio,TrimP)
     }else{
       MultiNomLogRatio <- matrix(0,dim(X)[1],1)
@@ -253,7 +260,14 @@ fitCentipede <- function(Xlist,Y, LambdaParList, BetaLogit, NegBinParList, sweep
     S <- dim(X)[2];
     R <- rowSums(X);
     if(S>1){
-      MultiNomLogLik <-  X %*% log(Lambda); ## Multinomial for 1 and 0
+      # MultiNomLogLik <-  X %*% log(Lambda); ## Multinomial for 1 and 0
+      
+      # create Lambda, remove -Inf values
+      fn        <- log(Lambda)
+      fn_noInf  <- fn[is.finite(fn)]
+      fn[is.infinite(fn)] <- min(fn_noInf) # assign min to Inf values
+      MultiNomLogLik      <-  X %*% fn
+
       ## MultiNomLogLik <- clipExtremes(MultiNomLogRatio,TrimP)
     }else{
       MultiNomLogLik <- matrix(0,dim(X)[1],1)
