@@ -1,5 +1,13 @@
 **Important** This is a copy of [CENTIPEDE](git@github.com:bakerwm/CENTIPEDE.git)
 
+
+## Branch
+
++ `master` - The original scripts 
++ `fixInf` - Fix **Inf errors** for some samples     
++ `dev` - Fix **Inf errors** and create **ggplot2 plot**    
+
+
 ## Why this repo?
 
 Record the changes I have made, in order to pass the programe.
