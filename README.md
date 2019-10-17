@@ -9,5 +9,6 @@ GNU General Public License (GPL)
 
 ## Branch
 
++ `master` - The original scripts 
 + `fixInf` - Fix **Inf errors** for some samples     
 + `dev` - Fix **Inf errors** and create **ggplot2 plot**    
