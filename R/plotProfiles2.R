@@ -36,8 +36,9 @@ plotProfile2 <- function(Profile,
   tags  <- c(-rev(tag), tag)
   
   ## prepare data
+  coords <- seq_len(nrow(df)/2)
   df <- df %>%
-    dplyr::mutate(position = rep(seq_len(nrow(df)/2), 2),
+    dplyr::mutate(position = c(coords, rev(coords)),
                   strand   = rep(c("fwd", "rev"), each = nrow(df) / 2))
   
   ## plot
